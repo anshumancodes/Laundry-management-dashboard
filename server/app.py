@@ -9,11 +9,10 @@ def index():
         return "adding data....."
     else:
         return f"Welcome to apna laundry"
+
 @app.route('/support')
 def support():
     return 'Welcome to the support page!'
-
-
 
 @app.route('/billing')
 def billing():
@@ -29,4 +28,4 @@ def payments():
 
 if __name__ == '__main__':
     print("Server started")
-    app.run( port=8000, debug=True)
+    app.run(port=8000, debug=True)
