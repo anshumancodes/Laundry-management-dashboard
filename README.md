@@ -11,6 +11,7 @@ git clone <git-repo-url>
 #for client dir
 cd client
 npm i
+npm run dev 
 
 #for server
 cd server
