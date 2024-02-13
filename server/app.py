@@ -1,14 +1,27 @@
-from flask import Flask
-from flask import request
+from flask import Flask,request,jsonify
+import json
+
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET'])
 def index():
-    if request.method == 'POST':
-        return "adding data....."
-    else:
-        return f"Welcome to apna laundry"
+    return f"welcome to suddhi home page"
+
+
+
+@app.route('/inventory', methods=['GET'])
+def inventory():
+     with open('laundry_data.json') as f:
+        laundry_data = json.load(f)
+        if(request.method=='GET'):
+             return jsonify(laundry_data)
+   
+      
+
+ 
+       
+    
 
 @app.route('/support')
 def support():
@@ -18,9 +31,7 @@ def support():
 def billing():
     return 'Welcome to the billing page!'
 
-@app.route('/inventory')
-def inventory():
-    return 'Welcome to the inventory page!'
+
 
 @app.route('/payments')
 def payments():
