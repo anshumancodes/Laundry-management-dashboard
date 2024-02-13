@@ -2,10 +2,12 @@ import React from "react";
 import "../../index.css";
 import Badges from "../global/Badges";
 import Footer from "../global/Footer";
+import Nav from "../global/Nav";
 
 const Home = () => {
   return (
     <div>
+        <Nav/>
       <section className="flex flex-col items-center gap-8">
         <div className="flex flex-col gap-5  mt-10 w-full justify-center items-center">
           <div className="flex flex-col justify-center items-center">
@@ -21,10 +23,10 @@ const Home = () => {
           </div>
           <div className="flex gap-5">
             <a
-              href=""
+              href="/dashboard"
               className="text-center bg-[#0C121C] px-5 py-2 font-bold text-[#f5f5f5]"
             >
-              <button>Get started</button>
+              <button >Get started</button>
             </a>
             <a
               href=""
