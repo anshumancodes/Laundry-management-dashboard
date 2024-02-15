@@ -9,6 +9,8 @@ CORS(app)
 def index():
     return f"welcome to suddhi home page"
 
+
+
 @app.route('/inventory', methods=['GET'])
 def inventory():
     with open('laundry_data.json') as f:
@@ -38,20 +40,42 @@ def inventory():
 
 
 
+@app.route('/api', methods=['GET', 'POST'])
+def api():
+    with open('laundry_data.json') as f:
+        laundry_data = json.load(f)
+
+    return jsonify(laundry_data)
 
 
 
-@app.route('/support')
-def support():
-    return 'Welcome to the support page!'
 
-@app.route('/billing')
-def billing():
-    return 'Welcome to the billing page!'
 
-@app.route('/payments')
-def payments():
-    return 'Welcome to the payments page!'
+
+@app.route('/dashboard/billing', methods=['POST'])
+def createbilling():
+       data = request.get_json()
+       print(data)
+
+       with open('laundry_data.json', 'r') as f:
+        laundry_data = json.load(f)
+        laundry_data.append(data)
+
+
+       
+
+       with open('laundry_data.json', 'w') as f:
+        json.dump(laundry_data, f, indent=4)
+        return jsonify(message="Data added to the file"), 201
+
+
+      
+
+    
+   
+
+
+
 
 if __name__ == '__main__':
     print("Server started")
