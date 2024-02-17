@@ -3,7 +3,7 @@ import React from "react";
 const Selector = ({activeorders}) => {
   return (
     <div>
-      <div className="bg-[#0C121C] justify-center flex gap-3 py-4 px-4 text-white w-[800px]">
+      <div className="bg-[#0C121C] justify-center flex gap-3 py-4 px-4 text-white w-[1000px]">
         <label htmlFor="label" className="font-bold">
           Outsourced agent:
         </label>
