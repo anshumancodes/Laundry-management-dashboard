@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import json
+import supportBot as Supportchat
 
 app = Flask(__name__)
 CORS(app)
@@ -16,7 +17,8 @@ def inventory():
     with open('laundry_data.json') as f:
         laundry_data = json.load(f)
         isActive = 0  # Initialize the counter for active items
-        isreceived = 0  
+        isreceived = 0 
+        isdamaged=0 
         yetToReceive=isActive-isreceived
         
         for item in laundry_data:
@@ -25,13 +27,16 @@ def inventory():
                 # isreceived-=isreceived
             if item["received"]:
                 isreceived+=1  
+            if item["damaged"]:
+                isdamaged=isdamaged+1
        
           
 
             sumData={
                  "active_count": isActive,
                  "received_Total":isreceived,
-                 "yet_toRecieve":isActive-isreceived
+                 "yet_toRecieve":isActive-isreceived,
+                 "damaged_garment":isdamaged
 
             }
                 
@@ -69,6 +74,40 @@ def createbilling():
         return jsonify(message="Data added to the file"), 201
 
 
+@app.route('/support', methods=['POST','GET'])
+def Support():
+   if request.method == 'GET':
+        # Handle GET request
+        return f"hello from"
+   elif request.method == 'POST':
+
+    data = request.json
+    response = Supportchat.process_data(data)
+    return jsonify({"response": response})
+
+        
+        
+
+
+    
+    # # Extract messages from the received data
+    # messages = data.get('messages', [])
+    
+    # # Call OpenAI API to generate completion
+    # completion = client.chat.completions.create(
+    #     model="gpt-3.5-turbo",
+    #     messages=messages
+    # )
+    
+    # # Extract the response
+    # response = completion.choices[0].message
+    
+    # # Return the response to the client
+    # return jsonify({"response": response})
+
+
+
+
       
 
     
@@ -79,4 +118,4 @@ def createbilling():
 
 if __name__ == '__main__':
     print("Server started")
-    app.run(port=8000, debug=True)
+    app.run(port=7000, debug=True)
