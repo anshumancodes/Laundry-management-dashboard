@@ -15,9 +15,9 @@ const Selector = ({activeorders}) => {
               className="w-[200px] bg-white text-black outline-none"
             >
               <option value="volvo">select a outsourcer</option>
-              <option value="saab">konkani summguler</option>
-              <option value="opel">bangladeshi agent </option>
-              <option value="audi">bismillah traders</option>
+              <option value="saab">konkani laundry services</option>
+              <option value="opel">exellect laundry  </option>
+              <option value="audi">sunrise laundry solutions</option>
             </select>
 
             <select
