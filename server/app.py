@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import json
-import supportBot as Supportchat
+
 
 app = Flask(__name__)
 CORS(app)
@@ -74,44 +74,45 @@ def createbilling():
         return jsonify(message="Data added to the file"), 201
 
 
-@app.route('/support', methods=['POST','GET'])
+@app.route('/support',)
 def Support():
-   if request.method == 'GET':
-        # Handle GET request
-        return f"hello from"
-   elif request.method == 'POST':
+    return jsonify({"message": "hello from support"})
+  
+       
 
-    data = request.json
-    response = Supportchat.process_data(data)
-    return jsonify({"response": response})
-
-        
-        
 
 
     
-    # # Extract messages from the received data
-    # messages = data.get('messages', [])
+
     
-    # # Call OpenAI API to generate completion
-    # completion = client.chat.completions.create(
-    #     model="gpt-3.5-turbo",
-    #     messages=messages
-    # )
-    
-    # # Extract the response
-    # response = completion.choices[0].message
-    
-    # # Return the response to the client
-    # return jsonify({"response": response})
+
+   
+   
 
 
-
-
-      
 
     
    
+   
+
+    
+
+    # response = client.chat.completions.create(
+
+    #     model="gpt-3.5-turbo",
+    #     messages=[
+    #           {"role": "user", "content": text},
+
+    
+    #         ]
+    # )
+
+
+    # generated_text = response.choices[0].message.content
+  
+
+
+
 
 
 
